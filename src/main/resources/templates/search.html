@@ -8,7 +8,6 @@
 
 <div class="container body-content">
 
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <form th:action="@{/search/results}" method = "post">
         <h2>Search by:</h2>
@@ -35,9 +34,9 @@
     </form>
 
     <hr />
-
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
-
+    <th:block th:replace="list-jobs :: showJobs"></th:block>
 </div>
 
 </body>
