@@ -24,7 +24,7 @@ public class SearchController {
         return "search";
     }
 
-    @PostMapping("results")
+    @RequestMapping(value = "results", method = {RequestMethod.POST})
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
         ArrayList<Job> jobs = new ArrayList<>();
         if (searchType.toLowerCase().equals("all")){
@@ -35,6 +35,7 @@ public class SearchController {
         jobs = JobData.findByColumnAndValue(searchType,searchTerm);
         model.addAttribute("jobs", jobs);
         model.addAttribute("columns", columnChoices);
+        model.addAttribute("searchTerm", searchTerm);
 
         return "search";
     }
